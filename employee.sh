@@ -1,23 +1,24 @@
 #!/bin/bash -x
 
-isFullTime=1;
-isPartTime=2;
-empRatePerHour=20;
-numOfWorkingDays=20;
-maxHoursInMonth=40;
+IS_FULL_TIME=1;
+IS_PART_TIME=2;
+EMP_RATE_PER_HOUR=20;
+NUM_OF_WORKING_DAYS=20;
+MAX_HOURS_IN_MONTH=40;
+
 totalEmpHours=0;
 totalWorkingDays=0;
 
-while [[ $totalEmpHours -lt $maxHoursInMonth &&  $totalWorkingDays -lt $numOfWorkingDays ]]
+while [[ $totalEmpHours -lt $MAX_HOURS_IN_MONTH &&  $totalWorkingDays -lt $NUM_OF_WORKING_DAYS ]]
 do
 	((totalWorkingDays++))
 	empCheck=$((RANDOM%3))
 
 	case $empCheck in 
-		$isFullTime)
+		$IS_FULL_TIME)
 			empHrs=8
 			;;
-		$isPartTime)
+		$IS_PART_TIME)
 			empHrs=4
 			;;
 		*)
@@ -27,4 +28,4 @@ do
 	totalEmpHours=$(($totalEmpHours+$empHrs))
 done
 
-totalSalary=$(($totalEmpHours*$empRatePerHour));
+totalSalary=$(($totalEmpHours*$EMP_RATE_PER_HOUR));
